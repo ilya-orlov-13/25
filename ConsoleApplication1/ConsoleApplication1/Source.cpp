@@ -1,34 +1,34 @@
 #include "header.h"
 
-// 1. Конструктор по умолчанию
+// 1. РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 Point::Point() : x(0.0), y(0.0) {}
 
-// 2. Конструктор с параметрами
+// 2. РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 Point::Point(double x_coord, double y_coord) : x(x_coord), y(y_coord) {}
 
-// 3. Конструктор из строки "x,y" или "(x,y)"
+// 3. РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РёР· СЃС‚СЂРѕРєРё "x,y" РёР»Рё "(x,y)"
 Point::Point(const string& point_str) {
     stringstream ss(point_str);
     double temp_x, temp_y;
     char comma, open_paren, close_paren;
 
-    // Попытка распарсить разные форматы: (x,y) или x,y
+    // РџРѕРїС‹С‚РєР° СЂР°СЃРїР°СЂСЃРёС‚СЊ СЂР°Р·РЅС‹Рµ С„РѕСЂРјР°С‚С‹: (x,y) РёР»Рё x,y
     ss >> open_paren;
     if (ss.fail() || open_paren != '(') {
-        // Если не начинается с '(', сбрасываем и пробуем формат "x,y"
-        ss.clear(); // Сброс флагов ошибок
-        ss.str(point_str); // Загружаем строку заново
+        // Р•СЃР»Рё РЅРµ РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ '(', СЃР±СЂР°СЃС‹РІР°РµРј Рё РїСЂРѕР±СѓРµРј С„РѕСЂРјР°С‚ "x,y"
+        ss.clear(); // РЎР±СЂРѕСЃ С„Р»Р°РіРѕРІ РѕС€РёР±РѕРє
+        ss.str(point_str); // Р—Р°РіСЂСѓР¶Р°РµРј СЃС‚СЂРѕРєСѓ Р·Р°РЅРѕРІРѕ
         if (!(ss >> temp_x >> comma >> temp_y) || comma != ',') {
             throw invalid_argument("Invalid point string format. Expected 'x,y' or '(x,y)'. Input: " + point_str);
         }
     }
-    else { // Формат (x,y)
+    else { // Р¤РѕСЂРјР°С‚ (x,y)
         if (!(ss >> temp_x >> comma >> temp_y >> close_paren) || comma != ',' || close_paren != ')') {
             throw invalid_argument("Invalid point string format for '(x,y)'. Input: " + point_str);
         }
     }
 
-    // Проверяем, что после парсинга в строке не осталось лишних символов
+    // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РїРѕСЃР»Рµ РїР°СЂСЃРёРЅРіР° РІ СЃС‚СЂРѕРєРµ РЅРµ РѕСЃС‚Р°Р»РѕСЃСЊ Р»РёС€РЅРёС… СЃРёРјРІРѕР»РѕРІ
     string remaining;
     if (ss >> remaining && !remaining.empty()) {
         throw invalid_argument("Extra characters in point string after parsing. Input: " + point_str);
@@ -39,7 +39,7 @@ Point::Point(const string& point_str) {
 }
 
 
-// Свойства (методы доступа)
+// РЎРІРѕР№СЃС‚РІР° (РјРµС‚РѕРґС‹ РґРѕСЃС‚СѓРїР°)
 double Point::getX() const {
     return x;
 }
@@ -61,21 +61,21 @@ void Point::setCoordinates(double x_coord, double y_coord) {
     y = y_coord;
 }
 
-// Заданный метод
+// Р—Р°РґР°РЅРЅС‹Р№ РјРµС‚РѕРґ
 double Point::distanceToOrigin() const {
-    // Расстояние = sqrt(x^2 + y^2)
+    // Р Р°СЃСЃС‚РѕСЏРЅРёРµ = sqrt(x^2 + y^2)
     return sqrt(pow(x, 2) + pow(y, 2));
 }
 
-// Дополнительный метод
+// Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРµС‚РѕРґ
 double Point::distanceToPoint(const Point& other) const {
     return sqrt(pow(this->x - other.x, 2) + pow(this->y - other.y, 2));
 }
 
 
-// Перегрузка оператора вывода
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
 ostream& operator<<(ostream& os, const Point& p) {
-    // Выводим с некоторой точностью для double
+    // Р’С‹РІРѕРґРёРј СЃ РЅРµРєРѕС‚РѕСЂРѕР№ С‚РѕС‡РЅРѕСЃС‚СЊСЋ РґР»СЏ double
     os << fixed << setprecision(2) << "(" << p.x << ", " << p.y << ")";
     return os;
 }

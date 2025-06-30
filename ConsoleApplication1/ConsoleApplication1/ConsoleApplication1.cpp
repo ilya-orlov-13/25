@@ -16,18 +16,18 @@ T get_validated_input(const string& prompt, T min_val = numeric_limits<T>::lowes
                 return value;
             }
             else {
-                cout << "Значение вне допустимого диапазона. Пожалуйста, попробуйте снова." << endl;
+                cout << "Р—РЅР°С‡РµРЅРёРµ РІРЅРµ РґРѕРїСѓСЃС‚РёРјРѕРіРѕ РґРёР°РїР°Р·РѕРЅР°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << endl;
             }
         }
         else {
-            cout << "Некорректный ввод. Пожалуйста, попробуйте снова." << endl;
+            cout << "РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << endl;
         }
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 }
 
-// Специализация для string
+// РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ РґР»СЏ string
 template <>
 string get_validated_input<string>(const string& prompt, string min_val, string max_val) {
     string value;
@@ -40,110 +40,110 @@ string get_validated_input<string>(const string& prompt, string min_val, string 
 //
 
 void test_point_class() {
-    cout << "Тестирование класса Point" << endl;
+    cout << "РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РєР»Р°СЃСЃР° Point" << endl;
 
-    // 1. Тестирование конструкторов
-    cout << "\n1. Тестирование конструкторов:" << endl;
+    // 1. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРІ
+    cout << "\n1. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРІ:" << endl;
     try {
-        Point p1; // Конструктор по умолчанию
-        cout << "p1 (по умолчанию): " << p1 << endl;
+        Point p1; // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+        cout << "p1 (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ): " << p1 << endl;
 
-        Point p2(3.0, 4.0); // Конструктор с параметрами
+        Point p2(3.0, 4.0); // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
         cout << "p2 (3.0, 4.0): " << p2 << endl;
 
-        Point p3_str1("(1.5,2.75)"); // Конструктор из строки "(x,y)"
+        Point p3_str1("(1.5,2.75)"); // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РёР· СЃС‚СЂРѕРєРё "(x,y)"
         cout << "p3_str1 ('(1.5,2.75)'): " << p3_str1 << endl;
 
-        Point p3_str2(" -2.0 , 5.1 "); // Конструктор из строки "x,y" (с пробелами, которые stringstream обработает)
+        Point p3_str2(" -2.0 , 5.1 "); // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РёР· СЃС‚СЂРѕРєРё "x,y" (СЃ РїСЂРѕР±РµР»Р°РјРё, РєРѕС‚РѕСЂС‹Рµ stringstream РѕР±СЂР°Р±РѕС‚Р°РµС‚)
         cout << "p3_str2 (' -2.0 , 5.1 '): " << p3_str2 << endl;
 
         Point p3_str3("7.0,8.123");
         cout << "p3_str3 ('7.0,8.123'): " << p3_str3 << endl;
 
 
-        cout << "Попытка создать Point p_invalid_str1('(1.x,2.0)'): ";
+        cout << "РџРѕРїС‹С‚РєР° СЃРѕР·РґР°С‚СЊ Point p_invalid_str1('(1.x,2.0)'): ";
         Point p_invalid_str1("(1.x,2.0)");
     }
     catch (const exception& e) {
-        cout << "Исключение: " << e.what() << endl;
+        cout << "РСЃРєР»СЋС‡РµРЅРёРµ: " << e.what() << endl;
     }
     try {
-        cout << "Попытка создать Point p_invalid_str2('(1.0,2.0)extra'): ";
+        cout << "РџРѕРїС‹С‚РєР° СЃРѕР·РґР°С‚СЊ Point p_invalid_str2('(1.0,2.0)extra'): ";
         Point p_invalid_str2("(1.0,2.0)extra");
     }
     catch (const exception& e) {
-        cout << "Исключение: " << e.what() << endl;
+        cout << "РСЃРєР»СЋС‡РµРЅРёРµ: " << e.what() << endl;
     }
     try {
-        cout << "Попытка создать Point p_invalid_str3('1.0;2.0'): ";
+        cout << "РџРѕРїС‹С‚РєР° СЃРѕР·РґР°С‚СЊ Point p_invalid_str3('1.0;2.0'): ";
         Point p_invalid_str3("1.0;2.0");
     }
     catch (const exception& e) {
-        cout << "Исключение: " << e.what() << endl;
+        cout << "РСЃРєР»СЋС‡РµРЅРёРµ: " << e.what() << endl;
     }
 
 
-    // 2. Тестирование сеттеров и геттеров
-    cout << "\n2. Тестирование сеттеров и геттеров:" << endl;
+    // 2. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРµС‚С‚РµСЂРѕРІ Рё РіРµС‚С‚РµСЂРѕРІ
+    cout << "\n2. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРµС‚С‚РµСЂРѕРІ Рё РіРµС‚С‚РµСЂРѕРІ:" << endl;
     Point p_set_get;
-    cout << "p_set_get (начальное): " << p_set_get << endl;
+    cout << "p_set_get (РЅР°С‡Р°Р»СЊРЅРѕРµ): " << p_set_get << endl;
     p_set_get.setX(1.23);
     p_set_get.setY(-4.56);
-    cout << "p_set_get (после setX(1.23), setY(-4.56)): " << p_set_get << endl;
+    cout << "p_set_get (РїРѕСЃР»Рµ setX(1.23), setY(-4.56)): " << p_set_get << endl;
     cout << "  getX(): " << p_set_get.getX() << endl;
     cout << "  getY(): " << p_set_get.getY() << endl;
     p_set_get.setCoordinates(10.0, 20.0);
-    cout << "p_set_get (после setCoordinates(10.0, 20.0)): " << p_set_get << endl;
+    cout << "p_set_get (РїРѕСЃР»Рµ setCoordinates(10.0, 20.0)): " << p_set_get << endl;
 
 
-    // 3. Тестирование метода distanceToOrigin
-    cout << "\n3. Тестирование метода distanceToOrigin:" << endl;
+    // 3. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° distanceToOrigin
+    cout << "\n3. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° distanceToOrigin:" << endl;
     Point p_dist1(3.0, 4.0);
-    cout << "Расстояние от " << p_dist1 << " до начала координат: " << p_dist1.distanceToOrigin() << " (Ожидаем: 5.00)" << endl;
+    cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ " << p_dist1 << " РґРѕ РЅР°С‡Р°Р»Р° РєРѕРѕСЂРґРёРЅР°С‚: " << p_dist1.distanceToOrigin() << " (РћР¶РёРґР°РµРј: 5.00)" << endl;
 
     Point p_dist2(0.0, 0.0);
-    cout << "Расстояние от " << p_dist2 << " до начала координат: " << p_dist2.distanceToOrigin() << " (Ожидаем: 0.00)" << endl;
+    cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ " << p_dist2 << " РґРѕ РЅР°С‡Р°Р»Р° РєРѕРѕСЂРґРёРЅР°С‚: " << p_dist2.distanceToOrigin() << " (РћР¶РёРґР°РµРј: 0.00)" << endl;
 
     Point p_dist3(-5.0, 12.0);
-    cout << "Расстояние от " << p_dist3 << " до начала координат: " << p_dist3.distanceToOrigin() << " (Ожидаем: 13.00)" << endl;
+    cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ " << p_dist3 << " РґРѕ РЅР°С‡Р°Р»Р° РєРѕРѕСЂРґРёРЅР°С‚: " << p_dist3.distanceToOrigin() << " (РћР¶РёРґР°РµРј: 13.00)" << endl;
 
-    // 4. Тестирование метода distanceToPoint (дополнительный)
-    cout << "\n4. Тестирование метода distanceToPoint:" << endl;
+    // 4. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° distanceToPoint (РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№)
+    cout << "\n4. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° distanceToPoint:" << endl;
     Point p_a(1.0, 1.0);
     Point p_b(4.0, 5.0); // dx=3, dy=4, dist=5
-    cout << "Расстояние от " << p_a << " до " << p_b << ": " << p_a.distanceToPoint(p_b) << " (Ожидаем: 5.00)" << endl;
-    cout << "Расстояние от " << p_b << " до " << p_a << ": " << p_b.distanceToPoint(p_a) << " (Ожидаем: 5.00)" << endl;
-    cout << "Расстояние от " << p_a << " до " << p_a << ": " << p_a.distanceToPoint(p_a) << " (Ожидаем: 0.00)" << endl;
+    cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ " << p_a << " РґРѕ " << p_b << ": " << p_a.distanceToPoint(p_b) << " (РћР¶РёРґР°РµРј: 5.00)" << endl;
+    cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ " << p_b << " РґРѕ " << p_a << ": " << p_b.distanceToPoint(p_a) << " (РћР¶РёРґР°РµРј: 5.00)" << endl;
+    cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ " << p_a << " РґРѕ " << p_a << ": " << p_a.distanceToPoint(p_a) << " (РћР¶РёРґР°РµРј: 0.00)" << endl;
 
 
-    // 5. Тестирование с пользовательским вводом
-    cout << "\n5. Тестирование с пользовательским вводом:" << endl;
+    // 5. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРј РІРІРѕРґРѕРј
+    cout << "\n5. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРј РІРІРѕРґРѕРј:" << endl;
     double x_user, y_user;
     string str_user;
 
-    cout << "Создание объекта Point через пользовательский ввод (числа):" << endl;
-    // Для double не указываем строгие min/max в get_validated_input, если они не нужны
+    cout << "РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Point С‡РµСЂРµР· РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ (С‡РёСЃР»Р°):" << endl;
+    // Р”Р»СЏ double РЅРµ СѓРєР°Р·С‹РІР°РµРј СЃС‚СЂРѕРіРёРµ min/max РІ get_validated_input, РµСЃР»Рё РѕРЅРё РЅРµ РЅСѓР¶РЅС‹
 
-    x_user = get_validated_input<double>("Введите координату X");
-    y_user = get_validated_input<double>("Введите координату Y");
+    x_user = get_validated_input<double>("Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚Сѓ X");
+    y_user = get_validated_input<double>("Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚Сѓ Y");
 
     Point user_point_nums(x_user, y_user);
-    cout << "Созданная точка (числа): " << user_point_nums << endl;
-    cout << "Расстояние от нее до начала координат: " << user_point_nums.distanceToOrigin() << endl;
+    cout << "РЎРѕР·РґР°РЅРЅР°СЏ С‚РѕС‡РєР° (С‡РёСЃР»Р°): " << user_point_nums << endl;
+    cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ РЅРµРµ РґРѕ РЅР°С‡Р°Р»Р° РєРѕРѕСЂРґРёРЅР°С‚: " << user_point_nums.distanceToOrigin() << endl;
 
-    cout << "\nСоздание объекта Point через пользовательский ввод (строка):" << endl;
+    cout << "\nРЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Point С‡РµСЂРµР· РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ (СЃС‚СЂРѕРєР°):" << endl;
     Point user_point_str;
     bool str_parsed = false;
     while (!str_parsed) {
-        str_user = get_validated_input<string>("Введите координаты точки в формате 'x,y' или '(x,y)'");
+        str_user = get_validated_input<string>("Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹ С‚РѕС‡РєРё РІ С„РѕСЂРјР°С‚Рµ 'x,y' РёР»Рё '(x,y)'");
         try {
             user_point_str = Point(str_user);
-            cout << "Созданная точка (строка): " << user_point_str << endl;
-            cout << "Расстояние от нее до начала координат: " << user_point_str.distanceToOrigin() << endl;
+            cout << "РЎРѕР·РґР°РЅРЅР°СЏ С‚РѕС‡РєР° (СЃС‚СЂРѕРєР°): " << user_point_str << endl;
+            cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ РЅРµРµ РґРѕ РЅР°С‡Р°Р»Р° РєРѕРѕСЂРґРёРЅР°С‚: " << user_point_str.distanceToOrigin() << endl;
             str_parsed = true;
         }
         catch (const exception& e) {
-            cout << "Ошибка парсинга строки: " << e.what() << " Попробуйте снова." << endl;
+            cout << "РћС€РёР±РєР° РїР°СЂСЃРёРЅРіР° СЃС‚СЂРѕРєРё: " << e.what() << " РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << endl;
         }
     }
 
